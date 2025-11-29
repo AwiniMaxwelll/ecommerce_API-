@@ -74,7 +74,7 @@ ecommerce_backend/
 Prerequisites
 Python 3.10+
 
-PostgreSQL (or SQLite for development)
+PostgreSQL (or MYSQL for development)
 
 pip (Python package manager)
 
@@ -82,7 +82,7 @@ Installation
 Clone the repository
 
 bash
-git clone https://github.com/yourusername/ecommerce-backend.git
+git clone https://github.com/awinimaxwelll/ecommerce-backend.git
 cd ecommerce-backend
 Create virtual environment
 
@@ -127,9 +127,18 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-SQLite (Development - Default)
-SQLite is configured by default for easy development setup.
 
+# Update settings.py with your MYSQL credentials
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ecommerce', # You can choose database name of your choose
+        'USER': 'your_username',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 📚 API Documentation
 Once the server is running, access the interactive API documentation:
 
@@ -283,7 +292,7 @@ Analytics and reporting
 Multi-vendor support
 
 📞 Support
-For support, email support@yourapp.com or create an issue in the repository.
+For support, email awinimaxwell428@gmail.com
 
 🙏 Acknowledgments
 Django REST Framework team
