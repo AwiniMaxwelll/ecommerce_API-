@@ -26,6 +26,7 @@ dotenv==0.9.9
 drf-yasg==1.21.10
 et_xmlfile==2.0.0
 frozenlist==1.8.0
+gunicorn==23.0.0
 idna==3.11
 inflection==0.5.1
 kombu==5.5.4
@@ -57,4 +58,5 @@ uritemplate==4.2.0
 urllib3==2.5.0
 vine==5.1.0
 wcwidth==0.2.13
+whitenoise==6.11.0
 yarl==1.22.0
