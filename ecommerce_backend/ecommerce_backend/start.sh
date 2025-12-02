@@ -4,6 +4,7 @@ set -e  # Exit on any error
 echo "🚀 Starting E-Commerce API Deployment..."
 
 # Run database migrations
+python manage.py makemigrations
 python manage.py migrate
 
 # Collect static files (for production)
