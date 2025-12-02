@@ -15,6 +15,7 @@ click-didyoumean==0.3.1
 click-plugins==1.1.1.2
 click-repl==0.3.0
 colorama==0.4.6
+dj-database-url==3.0.1
 Django==5.2.6
 django-cors-headers==4.7.0
 django-environ==0.12.0
@@ -31,7 +32,10 @@ idna==3.11
 inflection==0.5.1
 kombu==5.5.4
 multidict==6.7.0
+mysql-connector==2.2.9
+mysql-connector-python==9.4.0
 mysqlclient==2.2.7
+nodejs-wheel-binaries==22.20.0
 numpy==2.2.6
 openpyxl==3.1.5
 packaging==25.0
@@ -57,6 +61,3 @@ vine==5.1.0
 wcwidth==0.2.13
 whitenoise==6.11.0
 yarl==1.22.0
-dj-database-url==2.1.0
-psycopg2-binary==2.9.9              
-python-environ==1.0.1
