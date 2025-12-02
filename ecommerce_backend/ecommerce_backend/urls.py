@@ -44,7 +44,7 @@ urlpatterns = [
     # API endpoints
     path('api/auth/', include('ecommerce_backend.apps.users.urls')),
     path('api/products/', include('ecommerce_backend.apps.products.urls')),
-    # path('api/orders/', include('ecommerce_backend.apps.orders.urls')),
+    path('api/orders/', include('ecommerce_backend.apps.orders.urls')),
     
     # API Documentation
     path('', RedirectView.as_view(url='/swagger/', permanent=False)),
