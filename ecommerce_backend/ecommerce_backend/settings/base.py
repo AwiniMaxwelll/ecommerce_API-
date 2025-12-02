@@ -10,30 +10,35 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Initialize environment variables
-env = environ.Env(
-    DEBUG=(bool, False),
-    SECRET_KEY=(str, "django-insecure-change-me-now"),
-    ALLOWED_HOSTS=(list, []),
-    CORS_ALLOWED_ORIGINS=(list, []),
-)
-environ.Env.read_env(env_file=str(BASE_DIR / ".env"))  # Safe even if .env missing
-
+env = environ.Env()
+# environ.Env.read_env(env_file=str(BASE_DIR / ".env"))  # Safe even if .env missing
+environ.Env.read_env(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 
 # SECURITY & CORE SETTINGS
 
 SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = env("DEBUG") 
+DEBUG = env.bool('DEBUG', default=True) 
 
+# ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
+# if not DEBUG:
+#     ALLOWED_HOSTS += ["*"]  
+# CSRF_TRUSTED_ORIGINS = env.list(
+#     "CSRF_TRUSTED_ORIGINS",
+#     default=["http://localhost:3000", "http://127.0.0.1:3000"],
+# )
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
-if not DEBUG:
-    ALLOWED_HOSTS += ["*"]  
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]  # local development
+else:
+    ALLOWED_HOSTS += [".railway.app", ".up.railway.app"]
+
+# For CSRF with frontend on port 3000 (React, etc.)
 CSRF_TRUSTED_ORIGINS = env.list(
     "CSRF_TRUSTED_ORIGINS",
     default=["http://localhost:3000", "http://127.0.0.1:3000"],
 )
-
 
 # APPLICATION DEFINITION
 
@@ -55,9 +60,9 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",  # For development static serving
 
     # Local apps
-    "ecommerce_backend.apps.users",
-    "ecommerce_backend.apps.products",
-    "ecommerce_backend.apps.orders",
+    "apps.users",
+    "apps.products",
+    "apps.orders",
 ]
 
 MIDDLEWARE = [
@@ -72,8 +77,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "ecommerce_backend.urls"
-WSGI_APPLICATION = "ecommerce_backend.wsgi.application"
+ROOT_URLCONF = "urls"
+WSGI_APPLICATION = "wsgi.application"
 
 
 # TEMPLATES
@@ -98,7 +103,7 @@ TEMPLATES = [
 # DATABASE – AUTO-DETECT RAILWAY POSTGRES OR MYSQL
 
 
-DATABASE_URL = env("DATABASE_URL", default=None)
+DATABASE_URL = env("MYSQL_URL", default=None)
 
 if DATABASE_URL:
     DATABASES = {
@@ -111,18 +116,18 @@ if DATABASE_URL:
 else:
    
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": env("DB_NAME", default="ecommerce_dev"),
-            "USER": env("DB_USER", default="root"),
-            "PASSWORD": env("DB_PASSWORD", default=""),
-            "HOST": env("DB_HOS", default="localhost"),
-            "PORT": env("DB_PORT", default="3306"),
-            "OPTIONS": {
-                "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
-                "charset": "utf8mb4",
-            },
-        }
+            "default": {
+                "ENGINE": "django.db.backends.mysql",
+                "NAME": env("DB_NAME", default="ecommerce_api"),
+                "USER": env("DB_USER", default="root"),
+                "PASSWORD": env("DB_PASSWORD", default=""),
+                "HOST": env("DB_HOST", default="localhost"),
+                "PORT": env("DB_PORT", default="3306"),
+                "OPTIONS": {
+                    "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+                    "charset": "utf8mb4",
+                },
+            }
     }
 
 
@@ -157,7 +162,10 @@ SIMPLE_JWT = {
 }
 
 # CORS
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = env.list(
+    "CORS_ALLOWED_ORIGINS",
+    default=["http://localhost:3000", "https://your-project.up.railway.app"]
+)
 CORS_ALLOW_CREDENTIALS = True
 
 # STATIC & MEDIA FILES
