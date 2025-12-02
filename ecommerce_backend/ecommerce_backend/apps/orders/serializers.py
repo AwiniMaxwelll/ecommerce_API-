@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Order, OrderItem, Payment
-from ecommerce_backend.apps.products.serializers import ProductListSerializer
+from apps.products.serializers import ProductListSerializer
 
 class OrderItemSerializer(serializers.ModelSerializer):
     product_details = ProductListSerializer(source='product', read_only=True)

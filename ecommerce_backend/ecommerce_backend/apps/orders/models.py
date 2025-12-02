@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 from django.conf import settings
-from ecommerce_backend.apps.products.models import Product
+from apps.products.models import Product
 
 class Order(models.Model):
     STATUS_CHOICES = [
