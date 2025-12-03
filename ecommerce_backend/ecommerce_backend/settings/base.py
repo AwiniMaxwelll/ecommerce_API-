@@ -164,7 +164,7 @@ SIMPLE_JWT = {
 # CORS
 CORS_ALLOWED_ORIGINS = env.list(
     "CORS_ALLOWED_ORIGINS",
-    default=["http://localhost:3000", "https://your-project.up.railway.app"]
+    default=["http://localhost:3000", "https://ecommerceapi-production-9f80.up.railway.app"]
 )
 CORS_ALLOW_CREDENTIALS = True
 
