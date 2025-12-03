@@ -24,18 +24,18 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
-schema_view = get_schema_view(
-    openapi.Info(
-        title="E-Commerce API",
-        default_version='v1',
-        description="E-Commerce Backend API Documentation",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="awinimaxwell428@gmail.com"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
+# schema_view = get_schema_view(
+#     openapi.Info(
+#         title="E-Commerce API",
+#         default_version='v1',
+#         description="E-Commerce Backend API Documentation",
+#         terms_of_service="https://www.google.com/policies/terms/",
+#         contact=openapi.Contact(email="awinimaxwell428@gmail.com"),
+#         license=openapi.License(name="BSD License"),
+#     ),
+#     public=True,
+#     permission_classes=(permissions.AllowAny,),
+# )
 
 urlpatterns = [
     # admin site
