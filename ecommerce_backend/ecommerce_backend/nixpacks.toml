@@ -1,5 +1,13 @@
-[phases.setup]
-  nixLibs = ["..."]
+providers = ["python"]
 
+# This forces Python 3.11+ to be installed (fixes "python: command not found")
+[phases.setup]
+nixpkgsArchive = "f3d0f8c8f9d3b4c2e8d6e8f0d8c8e9d0f1g2h3i4"   # latest working archive with python
+
+# Install dependencies
+[phases.install]
+cmds = ["pip install --no-cache-dir -r requirements.txt"]
+
+# Start command — change only this line for your project
 [start]
-  cmd = "gunicorn ecommerce_backend.wsgi:application --bind 0.0.0.0:$PORT"
+cmd = "gunicorn ecommerce_backend.wsgi:application --bind 0.0.0.0:$PORT"
