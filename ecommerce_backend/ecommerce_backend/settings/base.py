@@ -32,7 +32,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 if DEBUG:
     ALLOWED_HOSTS = ["*"]  # local development
 else:
-    ALLOWED_HOSTS += [".railway.app", ".up.railway.app"]
+    ALLOWED_HOSTS += ["*.railway.app", ".up.railway.app"]
 
 # For CSRF with frontend on port 3000 (React, etc.)
 CSRF_TRUSTED_ORIGINS = env.list(
@@ -164,7 +164,7 @@ SIMPLE_JWT = {
 # CORS
 CORS_ALLOWED_ORIGINS = env.list(
     "CORS_ALLOWED_ORIGINS",
-    default=["http://localhost:3000", "https://your-project.up.railway.app"]
+    default=["http://localhost:3000", "https://ecommerceapi-production-9f80.up.railway.app"]
 )
 CORS_ALLOW_CREDENTIALS = True
 
