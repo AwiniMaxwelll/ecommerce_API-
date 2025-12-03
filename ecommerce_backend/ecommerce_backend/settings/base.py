@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     # "drf_yasg",  
-    "drf_spectacular"
+    "drf_spectacular",
     "django_filters",
     "corsheaders",
     "whitenoise.runserver_nostatic",  # For development static serving
