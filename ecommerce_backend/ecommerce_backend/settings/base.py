@@ -32,7 +32,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
 if DEBUG:
     ALLOWED_HOSTS = ["*"]  # local development
 else:
-    ALLOWED_HOSTS += [".railway.app", ".up.railway.app"]
+    ALLOWED_HOSTS += ["*.railway.app", ".up.railway.app"]
 
 # For CSRF with frontend on port 3000 (React, etc.)
 CSRF_TRUSTED_ORIGINS = env.list(
