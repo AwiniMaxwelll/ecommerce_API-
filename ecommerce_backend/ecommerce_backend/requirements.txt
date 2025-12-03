@@ -24,7 +24,7 @@ django_celery_results==2.6.0
 djangorestframework==3.16.1
 djangorestframework-simplejwt==5.2.2
 dotenv==0.9.9
-drf-yasg==1.21.10
+drf-spectacular==0.27.3
 et_xmlfile==2.0.0
 frozenlist==1.8.0
 gunicorn==23.0.0
