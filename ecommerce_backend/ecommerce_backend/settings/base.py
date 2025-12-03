@@ -105,20 +105,20 @@ TEMPLATES = [
 
 DATABASE_URL = env("MYSQL_URL", default=None)
 
-if DATABASE_URL:
-    DATABASES = {
-        "default": dj_database_url.parse(
-            DATABASE_URL,
-            conn_max_age=600,
-            conn_health_checks=True,
-        )
-    }
-else:
+# if DATABASE_URL:
+#     DATABASES = {
+#         "default": dj_database_url.parse(
+#             DATABASE_URL,
+#             conn_max_age=600,
+#             conn_health_checks=True,
+#         )
+#     }
+# else:
    
-    DATABASES = {
+DATABASES = {
             "default": {
                 "ENGINE": "django.db.backends.mysql",
-                "NAME": env("DB_NAME", default="ecommerce_api"),
+                "NAME": env("DB_NAME", default="railway"),
                 "USER": env("DB_USER", default="root"),
                 "PASSWORD": env("DB_PASSWORD", default=""),
                 "HOST": env("DB_HOST", default="localhost"),
