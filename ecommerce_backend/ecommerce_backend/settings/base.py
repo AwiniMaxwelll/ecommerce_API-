@@ -193,14 +193,22 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# SPECTACULAR_SETTINGS = {
+#     'TITLE': 'E-Commerce API',
+#     'DESCRIPTION': 'Scalable Django REST Framework backend for modern e-commerce',
+#     'VERSION': '1.0.0',
+#     'SERVE_INCLUDE_SCHEMA': False,
+#     'SWAGGER_UI_DIST': 'SIDEBAR',  # cleaner layout
+#     'SWAGGER_UI_SETTINGS': {
+#         'deepLinking': True,
+#     },
+#     'COMPONENT_SPLIT_REQUEST': True,
+# }
 SPECTACULAR_SETTINGS = {
     'TITLE': 'E-Commerce API',
-    'DESCRIPTION': 'Scalable Django REST Framework backend for modern e-commerce',
+    'DESCRIPTION': 'Scalable Django REST Framework backend',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
-    'SWAGGER_UI_DIST': 'SIDEBAR',  # cleaner layout
-    'SWAGGER_UI_SETTINGS': {
-        'deepLinking': True,
-    },
-    'COMPONENT_SPLIT_REQUEST': True,
+    # This line fixes the 404s forever
+    'SWAGGER_UI_DIST': 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5',
 }
