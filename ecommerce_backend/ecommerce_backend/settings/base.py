@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     # Third-party
     "rest_framework",
     "rest_framework_simplejwt",
-    "drf_yasg",           # Swagger
+    "drf_yasg",  
+    # "drf_spectacular"
     "django_filters",
     "corsheaders",
     "whitenoise.runserver_nostatic",  # For development static serving
@@ -135,6 +136,8 @@ DATABASES = {
 AUTH_USER_MODEL = "users.User"
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
@@ -144,14 +147,10 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 20,
+
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.JSONRenderer",
-        
-        *(
-            ("rest_framework.renderers.BrowsableAPIRenderer",)
-            if DEBUG
-            else ()
-        ),
+        "rest_framework.renderers.BrowsableAPIRenderer",   # ← Always show HTML UI
     ),
 }
 
